@@ -1,0 +1,60 @@
+﻿@model Futbolcu.Models.PostVM.PostVM
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<a href="/Admin/Admin/Create" class="btn btn-lg d-block btn-success ">Create</a>
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-lg-8 col-lg-offset-2 col-8">
+            <h2>Details</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Count</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Video</th>
+                        <th scope="col">Image</th>
+
+                        <th scope="col">Delete</th>
+                        <th scope="col">Edit</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Posts)
+                    {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@item.Category.Name</td>
+                        <td>@item.Count</td>
+                        <td>@item.Date</td>
+                        @if (item.Video!=null)
+                        {
+                            <td>
+                                <iframe width="220" height="245" src=@item.Video></iframe>
+                            </td>
+                        }
+
+                        <td>
+                            <img src="~/images/@item.Image" class="img-thumbnail" style="width:100px;height:100px" />
+                        </td>
+
+                        <td><a href="/Admin/Admin/Delete?id=@item.Id" class="text-danger">delete</a></td>
+                        <td><a href="/Admin/Admin/Edit?id=@item.Id" class=" text-info">edit</a></td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

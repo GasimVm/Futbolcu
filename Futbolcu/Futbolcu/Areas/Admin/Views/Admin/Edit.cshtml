@@ -1,0 +1,82 @@
+﻿@model Futbolcu.Models.Post
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+ 
+<hr />
+<div class="row">
+    <div class="col-md-4 col-12">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input name="Title" class="form-control" value="@Model.Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input name="Date" class="form-control" value="@Model.Date" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea rows="5" name="Description" class="form-control">  @Model.Description </textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Count" class="control-label"></label>
+                <textarea rows="1" name="Count" class="form-control">  @Model.Count </textarea>
+                <span asp-validation-for="Count" class="text-danger"></span>
+            </div>
+
+    
+    <div class="form-group">
+        <label class="control-label"></label>
+
+        <select class="form-control" name="CategoryId">
+            @foreach (var item in ViewBag.Category)
+            {
+                if (item.Name ==  ViewBag.image)
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+
+
+            }
+
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Images</label>
+        <input type="file" name="Photo" class="form-control" />
+
+
+        <img src="~/images/@Model.Image" class="img-thumbnail" style="width:120px;height:120px" />
+
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Video" class="control-label"></label>
+        <textarea rows="3" name="Video" class="form-control">  @Model.Video </textarea>
+        <span asp-validation-for="Video" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Edit" class="btn btn-success" />
+    </div>
+    </form>
+</div>
+</div>
+
+
+

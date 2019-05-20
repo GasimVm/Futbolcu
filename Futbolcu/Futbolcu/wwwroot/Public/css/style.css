@@ -1,0 +1,134 @@
+  .myicon{
+  color: #5f6f81;  
+  font-size: 2.5vw;
+margin-left: 5px;
+  }
+  #navbar{
+  	height: 100px;
+  }
+  .card{
+
+  	 margin-top: 12px;
+  	height: 320px;
+  	font-size:   1.3em;
+  	font-family: 'Roboto', sans-serif;
+}
+  
+  .card-img-top{
+  	height: 150px;
+  }
+  .carousel-img{
+  	height: 300px;
+  }
+  .carousel-title{
+  	width:  100%;
+  		font-family: 'Roboto', sans-serif;
+  	background-color: white;
+  	color: #5f6f81;
+  	font-size: 1.3em;
+  	text-align: center;
+   
+  } 
+  .carousel-indicators{
+  	margin-bottom: 55px;
+  }
+  @media (max-device-width: 375px) {
+    .carousel-title {
+        font-size: 2.4em;
+        
+    }
+    .gn-menu-wrapper {
+        width: 190px;
+        height:395px;
+        font-size: 1.5em;
+    }
+        .card-text {
+        font-size: 1.9em;
+    }
+    .codrops-icon {
+        font-size: 1.9em;
+    }
+    .item .title {
+        font-size: 1.9em;
+        height: 100px;
+        width: 100%;
+    }
+    .item-aside {
+        font-size: 1.1em;
+        height: 100px;
+        width: 100%;
+         
+    }
+     
+    .date{
+    	 font-size: 1.5em;
+
+    }
+    .show__count{
+    	 font-size: 2.5em;
+    }
+ 
+}
+.item{
+	position: relative;
+   height: 270px;
+   width:100%;
+    float: left;
+    margin-bottom: 12px;
+    background: #fff;
+    text-decoration: none;
+	 
+
+}
+.item-aside {
+    position: relative;
+    height: 170px;
+    width: 100%;
+    float: left;
+    margin-bottom: 12px;
+    background: #fff;
+    text-decoration: none;
+}
+
+.caption{
+	    padding: 13px 13px 5px;
+    font-family: KelsonSansBold;
+
+}
+.title{
+	color: #4c4a4a;
+ font-size: 0.9em;
+    text-align: left;
+    display: block;
+    overflow: hidden;
+    height: 35px;
+}
+.footer{
+ 
+	height: 350px;
+	background: black;
+	color: white;
+	  
+	font-size:1.2em;
+}
+.logo{
+	padding-top: 90px;
+	padding-left:100px;
+
+}
+.show__count {
+    color: #5f6f81;
+    position: absolute;
+    padding-left: 17px;
+    top: 65px;
+    right: 7px;
+    font-size: 17px;
+    height: 12px;
+    line-height: 12px;
+    background: url(/images/Product/1200show__count2.png) left center no-repeat;
+    bottom: 4px;
+}
+.maps{
+  margin-top: 60px;
+  margin-left: 150px;
+}

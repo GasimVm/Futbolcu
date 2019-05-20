@@ -1,0 +1,136 @@
+﻿@model Futbolcu.Models.PostVM.PostVM
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="product">
+    <div class="container">
+        <div class="row">
+            <div class="  col-lg-2"></div>
+
+            <div class="col-12 col-lg-8  ">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <!--  Product in commantary -->
+                                @for (int i = 0; i < Model.Posts.OrderByDescending(a => a.Id).Take(3).Count(); i++)
+                                {
+
+                                    <div class="carousel-item @(i==0 ? "active" :"")">
+                                        <a href="/Home/Details?id=@Model.Posts.OrderByDescending(a => a.Id).Take(3).ElementAt(i).Id">
+                                            <img class="d-block carousel-img w-100" src="~/images/@Model.Posts.OrderByDescending(a => a.Id).Take(3).ElementAt(i).Image" alt="First slide">
+                                            <div>
+                                                <h3 class="carousel-title">
+                                                    @Model.Posts.OrderByDescending(a => a.Id).Take(3).ElementAt(i).Title
+                                                </h3>
+
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                }
+
+
+
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row SrearchRes " style="margin-top:30px; margin-right: auto; ">
+                    <!-- Product in card -->
+                    @foreach (var item in Model.Posts.OrderByDescending(a=>a.Id))
+                    {
+                        <div class="col-sm-12 col-md-6 col-lg-4 ">
+                            <div class="item" style="height:auto;">
+                                <a href="/Home/Details?id=@item.Id">
+
+                                    <div class="caption">
+                                        <div class="date">@item.Date</div>
+                                        <div class="wrap"></div>
+                                        <h3 class="title"> @item.Title</h3>
+
+                                    </div>
+                                    <div class="img">
+                                        <img alt="AL-nın finalına bilet satışından əldə olunan vəsait UEFA-ya gedəcək" src="~/images/@item.Image" style="width:100%;height:170px;"
+                                             onerror="this.onerror=null;this.src='images/default-image.html';" />
+                                    </div>
+                                    <div class="show__count">@item.Count</div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+            <div class=" col-lg-2">
+                <div class="row">
+                    <div class="col-md-12 " style="margin-bottom: 300px ; font-size: 1.2em;">
+                        <aside>
+                            <div class="card ">
+                                <img class="card-img-top" src="~/images/product/Sonata.jpg" alt="Card image cap">
+                                <div class="card-body">
+
+                                    <p class="card-text">Sizin reklam burda ola biler</p>
+
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+@section scripts{
+    <script>
+        $(".gn-search").keyup(function () {
+            var query = $(".gn-search").val()
+            if (query != "") {
+                $.ajax({
+                    url: "/Home/AjaxSearch",
+                    data: { query: query },
+                    success: function (res) {
+                        $(".SrearchRes").html("");
+                        $(".SrearchRes").append(res);
+                    }
+                })
+            }  
+           
+        })
+
+        $(".category").click(function () {
+            var query = $(this).text();
+            
+            if (query != "") {
+                $.ajax({
+                    url: "/Home/AjaxCategory", 
+                    data: { query: query },
+                    success: function (res) {
+                        $(".SrearchRes").html("");
+                        $(".SrearchRes").append(res);
+                    }
+                })
+            }
+
+        })
+
+    </script>
+}

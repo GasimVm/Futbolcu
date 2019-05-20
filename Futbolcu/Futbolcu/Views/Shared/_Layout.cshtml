@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Public/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="~/Public/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/Public/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="~/Public/css/style.css" media="all">
+    <script src="~/Public/js/modernizr.custom.js"></script>
+    <title>Futbolcu.az</title>
+</head>
+<body>
+
+    <section id="navbar">
+        <div class="container-fluid">
+            <div class="row">
+                <ul id="gn-menu" class="gn-menu-main">
+                    <li class="gn-trigger">
+                        <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                        <nav class="gn-menu-wrapper">
+                            <div class="gn-scroller">
+                                <ul class="gn-menu">
+                                    <li class="gn-search-item">
+                                        <input placeholder="Search" type="search" class="gn-search">
+                                        <a class="gn-icon gn-icon-search"><span>Search</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="gn-icon category  "><i class="fab fa-youtube myicon"></i>Video</a>
+
+                                    </li>
+                                    <li>
+                                        <a class="gn-icon category  "><i class="fab fa-usps myicon"></i>Xeber</a>
+                                    </li>
+                                    <li>
+                                        <a class="gn-icon category "><i class="fas fa-exchange-alt myicon"></i>Transfer</a>
+
+                                    </li>
+                                    <li>
+                                        <a class="gn-icon " href="Home/Kulub"><i class="fas fa-band-aid myicon"></i> Klublar</a>
+                                    </li>
+                                    <li>
+                                    <a class="gn-icon " href="Home/LigaTable"><i class="fas fa-stream myicon"></i> Turnir cədvəli</a>
+                                    </li>
+                                    <li>
+                                    <a class="gn-icon  " href="Home/About"> <i class="fas fa-user-shield myicon"></i> Oyuncular</a>
+                                    </li>
+                                </ul>
+                            </div><!-- /gn-scroller -->
+                        </nav>
+                    </li>
+                    <li><a asp-controller="Home" asp-action="Index" class="codrops-icon">Home</a></li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="codrops-icon codrops-icon-drop" asp-controller="Account" asp-action="Login"><span>Login</span></a></li>
+
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <li><a class="codrops-icon codrops-icon-drop" asp-controller="Account" asp-action="Logout"><span>Logout</span></a></li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="codrops-icon codrops-icon-drop" asp-area="" asp-controller="Account" asp-action="Profile" asp-route-Id="@User.Identity.Name"><span>@User.Identity.Name</span></a></li>
+                    }
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="codrops-icon codrops-icon-drop" asp-area="" asp-controller="Account" asp-action="Register"><span>Register</span></a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+    @RenderBody()
+
+    <footer>
+        <div class="container-fluid footer">
+            <div class="row">
+
+                <div class="logo col-6 col-lg-6 ">
+                    <img src="~/images/Product/lg.png" style="width:250px;height:250px;" alt="">
+                     
+                </div>
+                <div class="col-6 col-lg-6">
+                    <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d41601.58380874557!2d49.8263214!3d40.3781564!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2s!4v1558012083599!5m2!1sen!2s" width="300" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.0.js"
+            integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+            crossorigin="anonymous"></script>
+    <script src="~/Public/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/Public/js/script.js"></script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>
